@@ -8,14 +8,26 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+    private static Constellation[] constellations;
+    private EditText editBirthday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +45,25 @@ public class MainActivity extends AppCompatActivity
 //            }
 //        });
 
-        EditText editBirthday = (EditText) findViewById(R.id.editBirthday);
+        editBirthday = (EditText) findViewById(R.id.editBirthday);
+        editBirthday.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                TextView editConstellation = (TextView)findViewById(R.id.editConstellation);
+                editConstellation.setText(getConstellation(editBirthday.getText().toString()));
+            }
+        });
+
         editBirthday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +82,50 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    /**
+     * 日付から該当する星座を判定する
+     * @param birthday
+     * @return constellation
+     */
+    private String getConstellation(String birthday) {
+
+        // 星座リストの初期化
+        initConstellations();
+
+        try {
+            Date dateBirthday = format.parse(birthday);
+
+            for (Constellation c : constellations) {
+                if (c.between(dateBirthday)) {
+                    return c.getName();
+                }
+            }
+        } catch (ParseException e) {
+
+        }
+
+        return null;
+    }
+
+    /**
+     * 星座リストを初期化する
+     */
+    private static void initConstellations() {
+        constellations = new Constellation[12];
+        int i = 0;
+        constellations[i++] = new Constellation("Aquarius", "1/20", "2/18");
+        constellations[i++] = new Constellation("Pisces", "2/19", "3/20");
+        constellations[i++] = new Constellation("Aries", "3/21", "4/19");
+        constellations[i++] = new Constellation("Taurus", "4/20", "5/20");
+        constellations[i++] = new Constellation("Gemini", "5/21", "6/21");
+        constellations[i++] = new Constellation("Cancer", "6/22", "7/22");
+        constellations[i++] = new Constellation("Leo", "7/23", "8/22");
+        constellations[i++] = new Constellation("Virgo", "8/23", "9/22");
+        constellations[i++] = new Constellation("Libra", "9/23", "10/23");
+        constellations[i++] = new Constellation("Scorpio", "10/24", "11/22");
+        constellations[i++] = new Constellation("Sagittarius", "11/23", "12/21");
+        constellations[i++] = new Constellation("Capricorn", "12/22", "1/19");
+    }
 
     @Override
     public void onBackPressed() {
