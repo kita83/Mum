@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -101,9 +102,9 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         } catch (ParseException e) {
-
+            Log.e("Parse exceptions", "Parse exceptions");
+            return null;
         }
-
         return null;
     }
 
@@ -113,18 +114,18 @@ public class MainActivity extends AppCompatActivity
     private static void initConstellations() {
         constellations = new Constellation[12];
         int i = 0;
-        constellations[i++] = new Constellation("Aquarius", "1/20", "2/18");
-        constellations[i++] = new Constellation("Pisces", "2/19", "3/20");
-        constellations[i++] = new Constellation("Aries", "3/21", "4/19");
-        constellations[i++] = new Constellation("Taurus", "4/20", "5/20");
-        constellations[i++] = new Constellation("Gemini", "5/21", "6/21");
-        constellations[i++] = new Constellation("Cancer", "6/22", "7/22");
-        constellations[i++] = new Constellation("Leo", "7/23", "8/22");
-        constellations[i++] = new Constellation("Virgo", "8/23", "9/22");
-        constellations[i++] = new Constellation("Libra", "9/23", "10/23");
-        constellations[i++] = new Constellation("Scorpio", "10/24", "11/22");
-        constellations[i++] = new Constellation("Sagittarius", "11/23", "12/21");
-        constellations[i++] = new Constellation("Capricorn", "12/22", "1/19");
+        constellations[i++] = new Constellation("みずがめ座", "1/20", "2/18");
+        constellations[i++] = new Constellation("うお座", "2/19", "3/20");
+        constellations[i++] = new Constellation("おひつじ座", "3/21", "4/19");
+        constellations[i++] = new Constellation("おうし座", "4/20", "5/20");
+        constellations[i++] = new Constellation("ふたご座", "5/21", "6/21");
+        constellations[i++] = new Constellation("かに座", "6/22", "7/22");
+        constellations[i++] = new Constellation("しし座", "7/23", "8/22");
+        constellations[i++] = new Constellation("おとめ座", "8/23", "9/22");
+        constellations[i++] = new Constellation("てんびん座", "9/23", "10/23");
+        constellations[i++] = new Constellation("さそり座", "10/24", "11/22");
+        constellations[i++] = new Constellation("いて座", "11/23", "12/21");
+        constellations[i++] = new Constellation("やぎ座", "12/22", "1/19");
     }
 
     @Override

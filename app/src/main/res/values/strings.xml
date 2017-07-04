@@ -22,10 +22,10 @@
     <string name="profile_blood_ab">AB</string>
     <string name="profile_blood_unknown">不明</string>
     <string name="profile_constellation">星座</string>
-    <string name="profile_taurus">牡牛座</string>
     <string name="profile_height_weight">生まれたときの身長と体重</string>
     <string name="profile_height">cm</string>
     <string name="profile_weight">g</string>
+    <string name="profile_taurus">星座が入るよ</string>
 
 
 </resources>
