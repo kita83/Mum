@@ -26,6 +26,13 @@
     <string name="profile_height">cm</string>
     <string name="profile_weight">g</string>
     <string name="profile_taurus">星座が入るよ</string>
+    <string name="menu_profile">赤ちゃんプロフィール</string>
+    <string name="menu_calendar">フォトカレンダー</string>
+    <string name="menu_detail">今日の一枚</string>
+    <string name="menu_settings">設定</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
