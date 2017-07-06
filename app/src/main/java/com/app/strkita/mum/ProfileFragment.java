@@ -1,9 +1,7 @@
 package com.app.strkita.mum;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -23,7 +21,7 @@ import java.util.Date;
  * Created by strkita on 2017/07/05.
  */
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends android.support.v4.app.Fragment {
     DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
     private static Constellation[] constellations;
     private EditText editBirthday;
@@ -33,7 +31,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup)inflater.inflate(R.layout.fragment_profile, null);
 
-        editBirthday = (EditText) getView().findViewById(R.id.editBirthday);
+        editBirthday = (EditText) root.findViewById(R.id.editBirthday);
         editBirthday.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

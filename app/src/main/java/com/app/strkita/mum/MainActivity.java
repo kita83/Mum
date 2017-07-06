@@ -1,8 +1,9 @@
 package com.app.strkita.mum;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,17 +12,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private EditText editBirthday;
     final String[] fragments = {
             "com.app.strkita.mum.ProfileFragment",
             "com.app.strkita.mum.CalendarFragment",
             "com.app.strkita.mum.DetailFragment",
-            "com.app.strkita.mum.SettingFragment"
+            "com.app.strkita.mum.SettingFragment",
     };
 
     @Override
@@ -73,25 +72,25 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-
+        FragmentManager fragmentManager = getSupportFragmentManager();
         switch (id) {
             case R.id.nav_profile:
-                getFragmentManager().beginTransaction()
+                fragmentManager.beginTransaction()
                         .replace(R.id.container, Fragment.instantiate(MainActivity.this, fragments[0]))
                         .commit();
                 break;
             case R.id.nav_calendar:
-                getFragmentManager().beginTransaction()
+                fragmentManager.beginTransaction()
                         .replace(R.id.container, Fragment.instantiate(MainActivity.this, fragments[1]))
                         .commit();
                 break;
             case R.id.nav_detail:
-                getFragmentManager().beginTransaction()
+                fragmentManager.beginTransaction()
                         .replace(R.id.container, Fragment.instantiate(MainActivity.this, fragments[2]))
                         .commit();
                 break;
             case R.id.nav_settings:
-                getFragmentManager().beginTransaction()
+                fragmentManager.beginTransaction()
                         .replace(R.id.container, Fragment.instantiate(MainActivity.this, fragments[3]))
                         .commit();
                 break;
