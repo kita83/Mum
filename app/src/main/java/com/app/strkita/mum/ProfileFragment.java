@@ -1,7 +1,9 @@
 package com.app.strkita.mum;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -25,6 +27,9 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
     DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
     private static Constellation[] constellations;
     private EditText editBirthday;
+
+    public ProfileFragment() {
+    }
 
     @Nullable
     @Override
